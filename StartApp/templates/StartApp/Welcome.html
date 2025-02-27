@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block custom_content }}
+
+<!-- welcome text -->
+<div class="welcome pt-4 pb-4" id="content"> 
+    {{ include 'StartApp/config/html/welcome.html' }}
+</div>
+
+<!-- next button -->
+{{ include 'global/Next_Page_Button.html' }}
+
+<script src="https://unpkg.com/bowser@2.11.0/es5.js"></script>
+<script>
+    // tracking browser type
+    window.addEventListener('load', function () {
+        var ua = navigator.userAgent;
+        const browserData = bowser.parse(ua);
+
+        live_data['browser_type'] = browserData.browser.name ? browserData.browser.name : 'NA';
+        live_data['device_type'] = browserData.platform.type ? browserData.platform.type : 'NA';
+        live_data['os_system'] = browserData.os.name ? browserData.os.name : 'NA';
+
+        finish_loading()
+    })
+</script>
+
+<style>
+    .welcome {
+       font-size: x-large;
+    }
+</style>
+
+{{ endblock }}

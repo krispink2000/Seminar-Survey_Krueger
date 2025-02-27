@@ -1,0 +1,62 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+
+{% block custom_content %}
+<div class="container">
+
+
+
+    <div class="mb-3 bg-light border pt-2 pb-2 px-2">
+        <p><b>Wie wahrscheinlich ist es, dass Sie die folgenden Maßnahmen in Bezug auf das Mercosur-Abkommen ergreifen? </b></p>
+        <p><b>1:Sehr unwahrscheinlich bis 10:Sehr wahrscheinlich (zusätzlich 0 „Nicht sicher“) </b></p>
+
+        <div class="mb-3 bg-light border pt-2 pb-2 px-2">
+            {{formfield 'post_talk_friends'}}
+        </div>
+
+        <div class="mb-3 bg-light border pt-2 pb-2 px-2">
+            {{formfield 'post_share_socialmedia'}}
+        </div>
+
+        <div class="mb-3 bg-light border pt-2 pb-2 px-2">
+            {{formfield 'post_consider_voting'}}
+        </div>
+
+        <div class="mb-3 bg-light border pt-2 pb-2 px-2">
+            {{formfield 'post_support_petition'}}
+        </div>
+
+        <div class="mb-3 bg-light border pt-2 pb-2 px-2">
+            {{formfield 'post_attend_protest'}}
+        </div>
+
+        <div class="mb-3 bg-light border pt-2 pb-2 px-2">
+            {{formfield 'post_legal_action'}}
+        </div>
+
+        <div class="mb-3 bg-light border pt-2 pb-2 px-2">
+            {{formfield 'post_next_vote'}}
+        </div>
+
+        <div class="mb-3 bg-light border pt-2 pb-2 px-2">
+            {{formfield 'post_contact_politics'}}
+        </div>
+
+        <div class="mb-3 bg-light border pt-2 pb-2 px-2">
+            {{formfield 'post_boycott'}}
+        </div>
+    </div>
+
+    <p>Bitte klicken Sie nun auf den "Weiter"-Button, um fortzufahren.</p>
+    <button class="otree-btn-next btn btn-primary next-button otree-next-button">
+        Weiter
+    </button>
+</div>
+{% endblock %}

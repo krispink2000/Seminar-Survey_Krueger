@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block custom_content }}
+
+<!-- end text -->
+{{ include 'EndApp/config/html/end.html' }}
+
+
+<script>
+    window.onload = function () {
+        window.location.replace(js_vars["link"]);
+    }
+</script>
+
+{{ endblock }}

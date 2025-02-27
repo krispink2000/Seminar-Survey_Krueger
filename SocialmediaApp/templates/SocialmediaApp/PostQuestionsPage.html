@@ -1,0 +1,74 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+{% block global_styles %}
+    <link rel="stylesheet" href="{% static 'tweet_component.css' %}">
+{% endblock %}
+
+{% block custom_content %}
+
+    <div style="margin-bottom: 24px;"></div>
+ 
+    <p>Dies wird als „Community Notes“ bezeichnet. Beantworten Sie die unten stehenden Fragen zu dieser Funktion.</p>
+
+    <div class="community-example">
+        <div class="community-header">
+            <img src="/static/images/community.png" alt="community" height="19px" width="19px">
+            <span>Leser*innen haben Kontext hinzugefügt</span>
+        </div>
+
+        <div class="community-content">
+            <span> Dies ist ein Beispiel einer 'Commnity Note', welche Sie während des Experiments gesehen haben. Ziel der Community 
+                Notes ist es, zusätzlichen Kontext und Klarstellungen von Unwahrheiten in den sozialen Medien bereitzusetellen.</span>
+        </div>
+
+        <div class="community-footer">
+            <div class="community-footer-text">
+                <span>Findest du das hilfreich?</span>
+            </div>
+            
+            <div class="community-footer-button">
+                <div class="button">
+                    <span>Bewerten</span>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+    <div style="margin-bottom: 32px;"></div>
+
+    <p>Ist Ihnen aufgefallen, dass "Community Notes" in einigen Tweets vorhanden war?</p>
+    <input id="postYes" type="radio" name="post_quest" value="1" /> Ja
+    <br>
+    <input id="postNo" type="radio" name="post_quest" value="2" /> Nein
+    <br>
+    <input id="postUndecided" type="radio" name="post_quest" value="3" /> Keine Antwort
+    {{ formfield_errors 'post_quest' }}
+    <br>
+    <br>
+    <p>Haben Sie schon einmal eine "Community Note" gesehen?</p>
+    <input id="CommYes" type="radio" name="post_quest_2" value="1" /> Ja
+    <br>
+    <input id="CommNo" type="radio" name="post_quest_2" value="2" /> Nein
+    <br>
+    <input id="CommUndecided" type="radio" name="post_quest_2" value="3" /> Keine Antwort
+    {{ formfield_errors 'post_quest_2' }}
+    <br>
+    <br>
+    <p>Finden Sie diese Funktion "Community Note" nützlich?</p>
+    <input id="funkYes" type="radio" name="post_quest_3" value="1" /> Ja
+    <br>
+    <input id="funkNo" type="radio" name="post_quest_3" value="2" /> Nein
+    <br>
+    <input id="funkUndecided" type="radio" name="post_quest_3" value="3" /> Keine Antwort
+    {{ formfield_errors 'post_quest_3' }}
+
+    <div style="margin-bottom: 24px;"></div>
+
+    <button class="otree-btn-next btn btn-primary next-button otree-next-button">
+        Weiter
+    </button>
+
+{% endblock %}

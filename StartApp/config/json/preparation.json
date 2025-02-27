@@ -1,0 +1,56 @@
+{
+    "gender": {
+        "label": "Was ist ihr Geschlecht?",
+        "choices": [
+            "Weiblich",
+            "Männlich",
+            "Divers",
+            "Möchte ich nicht sagen",
+            "Keine Angabe"
+        ]
+    },
+    "age": {
+        "label": "In welchem Jahr sind Sie geboren? Bitte geben Sie Ihr Geburtsjahr an."
+    },
+    "eligible": {
+        "label": "Sind Sie derzeit wahlberechtigt für die kommende Bundestagswahl in Deutschland?",
+        "choices": [
+            "Ja",
+            "Nein",
+            "Weiß nicht"
+        ]
+    },
+    "participation": {
+        "label": "Wenn am nächsten Sonntag Bundestagswahl wäre, gehen Sie..",
+        "choices": [
+            "bestimmt zur Wahl",
+            "wahrscheinlich zur Wahl",
+            "vielleicht zur Wahl",
+            "wahrscheinlich nicht zur Wahl",
+            "bestimmt nicht zur Wahl",
+            "Weiß nicht"
+        ]
+    },
+    "federal_state": {
+        "label": "In welchem Bundesland sind Sie wahlberechtigt?",
+        "choices": [
+            "Schleswig-Holstein",
+            "Hamburg",
+            "Niedersachsen",
+            "Bremen",
+            "Nordrhein-Westfalen",
+            "Hessen",
+            "Rheinland-Pfalz",
+            "Baden-Württemberg",
+            "Bayern",
+            "Saarland",
+            "Berlin",
+            "Brandenburg",
+            "Mecklenburg-Vorpommern",
+            "Sachsen",
+            "Sachsen-Anhalt",
+            "Thüringen",
+            "Weiß nicht"
+        ]
+    }
+}

@@ -1,0 +1,87 @@
+/* Default Styling (For Large Screens - Keep Original Look) */
+.rating-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;  /* Keep items in one row */
+    gap: 10px; /* Add spacing */
+    text-align: center;
+    padding: 10px;
+}
+
+.rating-label {
+    font-weight: bold;
+    width: 150px;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/*!* Left Label - Align to Right on Large Screens *!*/
+/*.rating-label.left {*/
+/*    text-align: right;*/
+/*    margin-right: auto; !* Push it to the left side of the container *!*/
+/*}*/
+
+/*!* Right Label - Align to Left on Large Screens *!*/
+/*.rating-label.right {*/
+/*    text-align: left;*/
+/*    margin-left: auto; !* Push it to the right side of the container *!*/
+/*}*/
+
+.radio-group {
+    display: flex;
+    gap: 20px; /* Adjust spacing for big screens */
+    flex-wrap: nowrap; /* Prevents breaking */
+    justify-content: center; /* Center radio buttons horizontally */
+}
+
+.large-radio {
+    width: 15px;
+    height: 15px;
+}
+
+.keine-angabe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+/* 📱 Mobile Styling (ONLY applies when screen is 600px or smaller) */
+@media only screen and (max-width: 600px) {
+    .rating-container {
+        flex-wrap: wrap; /* Stacks everything vertically */
+        gap: 15px; /* Add space between stacked elements */
+        padding: 10px;
+        flex-direction: column; /* Stack vertically */
+        align-items: center; /* Center elements horizontally */
+    }
+
+    .rating-label {
+        width: auto; /* Allow text to break naturally */
+        max-width: 100%; /* Remove width limit */
+        text-align: center; /* Center the label text */
+        white-space: nowrap; /* Prevent label from wrapping */
+    }
+
+    .radio-group {
+        display: flex;
+        flex-direction: column; /* Stack radio buttons vertically */
+        gap: 16px; /* Add spacing between radio buttons */
+        justify-content: center; /* Center radio buttons horizontally */
+        align-items: center; /* Ensure radio buttons are centered */
+    }
+
+    .large-radio {
+        width: 15px; /* Make radio buttons smaller on mobile */
+        height: 15px;
+    }
+
+    .keine-angabe {
+        margin-left: 0;
+        text-align: center; /* Center the "Keine Angabe" text */
+        white-space: normal; /* Allow wrapping for "Keine Angabe" */
+    }
+}

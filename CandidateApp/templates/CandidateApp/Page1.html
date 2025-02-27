@@ -1,0 +1,134 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block custom_content %}
+
+{% block global_styles %}
+    <link rel="stylesheet" href="{% static 'common.css' %}">
+{% endblock %}
+
+<!-- Event-Listener that displays the "Weiter"-Button only after a radio option is selected  -->
+<script>
+    window.onload = function () {
+        if (performance.getEntriesByType("navigation")[0].type === "reload") {
+            window.location.href = window.location.href;
+        }
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // Hide the popout question initially
+        const popoutQuestion = document.getElementById("popout-question");
+        const weiterButton = document.getElementById("weiter-button");
+        const radioButtons = document.querySelectorAll("input[name='comp_trust']");
+
+        weiterButton.style.display = "none";
+
+        radioButtons.forEach(function (radio) {
+            radio.addEventListener("change", function () {
+                weiterButton.style.display = "block";
+            });
+        });
+    });
+</script>
+
+<!-- Centering text elements-->
+<div style="text-align: center; font-size: 18px;">
+    Bitte schauen Sie sich diese Person für <b></b>mindestens 3 Sekunden genau an <br> und beantworten Sie dann die
+    Frage. Sobald Sie eine der Antwortmöglichkeiten ausgewählt haben,
+    <br> können Sie mit der nächsten Seite fortfahren.
+</div>
+<br>
+<br>
+<!-- Display either competence or Trustworthiness question -->
+<p style="text-align: center; font-size: 18px;"><b>
+    {% if displayed_question == 'competence' %}
+        Wie schätzen Sie die
+        <span style="font-weight: bold; color: #008080; text-decoration: underline;">Kompetenz</span> dieser
+        Politikerin ein?
+    {% elif displayed_question == 'trustworthiness' %}
+        Wie <span style="font-weight: bold; color: #FFA500; text-decoration: underline;">vertrauenswürdig</span> ist
+        diese Politikerin Ihrer Meinung nach?
+    {% endif %}
+</b></p>
+
+<!-- create image container and store picture  -->
+<div style="text-align: center;">
+    <img id="politician" width="50%" height="50%" src="{{ image_path }}"/>
+</div>
+
+<!-- Hidden input field for the picture assignment -->
+<input id="picture_assignment" type="hidden" name="picture_assignment" value="{{ assigned_picture }}"/>
+<br>
+<br>
+<!-- Radio-Buttons QUestion for either Trust or Competence-->
+<div id="popout-question" style="display: none; text-align: center;">
+
+<form method="post">
+
+    <!-- Left Label -->
+    <div class="rating-container">
+<!-- Left Label -->
+        <div class="rating-label">
+            {% if displayed_question == 'competence' %}
+                Überhaupt nicht kompetent
+            {% elif displayed_question == 'trustworthiness' %}
+                Überhaupt nicht vertrauenswürdig
+            {% endif %}
+        </div>
+
+        <div class="radio-group">
+        <!-- Radio Buttons -->
+            <input type="radio" name="comp_trust" value="1" {% if player.comp_trust == 1 %} checked {% endif %}
+                class="large-radio">
+            <input type="radio" name="comp_trust" value="2" {% if player.comp_trust == 2 %} checked {% endif %}
+                class="large-radio">
+            <input type="radio" name="comp_trust" value="3" {% if player.comp_trust == 3 %} checked {% endif %}
+                class="large-radio">
+            <input type="radio" name="comp_trust" value="4" {% if player.comp_trust == 4 %} checked {% endif %}
+                class="large-radio">
+            <input type="radio" name="comp_trust" value="5" {% if player.comp_trust == 5 %} checked {% endif %}
+                class="large-radio">
+        </div>
+
+        <!-- Right Label -->
+
+        <div class="rating-label">
+            {% if displayed_question == 'competence' %}
+                Sehr kompetent
+            {% elif displayed_question == 'trustworthiness' %}
+                Sehr vertrauenswürdig
+            {% endif %}
+        </div>
+
+        <!-- "Keine Angabe" option -->
+            <div class="keine-angabe">
+            <span style="margin-bottom: 5px; font-weight: bold;">Keine Angabe</span>
+            <input type="radio" name="comp_trust" value="-1" {% if player.comp_trust == -1 %} checked {% endif %}
+                    class="large-radio">
+        </div>
+    </div>
+<!-- Fix "Weiter"-Button to the bottom right  -->
+<div class="form-errors">
+    {{ formfield_errors 'comp_trust' }}
+    <br>
+    <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+        <button id="weiter-button" class="otree-btn-next btn btn-primary">Weiter</button>
+    </div>
+
+</div>
+
+<!--Show  Radio Buttons after 3 seconds  -->
+<script>
+    setTimeout(function () {
+        document.getElementById("popout-question").style.display = "block";
+    }, 2500);
+</script>
+
+<!-- Increase size of radio button  -->
+<style>
+    .large-radio {
+        transform: scale(1.5);
+    }
+</style>
+
+{% endblock %}

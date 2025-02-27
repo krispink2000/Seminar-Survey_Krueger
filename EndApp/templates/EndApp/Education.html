@@ -1,0 +1,92 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block custom_content }}
+
+
+
+<!-- questions -->
+<div id="content">
+    {{ formfield "edu_general_education"}}
+    {{ formfield "edu_general_education_open" }}
+    {{ formfield "edu_vocational_training" }}
+    {{ formfield "edu_vocational_training_open" }}
+</div>
+
+<!-- next button -->
+{{ include 'global/Next_Page_Button.html' }}
+
+<script>
+    // get open text field by its id
+    const gen_ed_op = document.getElementById("id_edu_general_education_open")
+    const voc_train_op = document.getElementById("id_edu_vocational_training_open")
+
+    // get the corresponding field containing all checkboxes by its id
+    const gen_ed_div = document.getElementById("id_edu_general_education")
+    const voc_train_div = document.getElementById("id_edu_vocational_training")
+
+    // get all checkboxes
+    const gen_ed_checks = gen_ed_div.getElementsByClassName("form-check")
+    // get the last checkbox, because thats "others, namely"
+    const gen_ed_lst = gen_ed_checks[gen_ed_checks.length - 1].getElementsByTagName("input")[0]
+
+    const voc_train_checks = voc_train_div.getElementsByClassName("form-check")
+    const voc_train_lst = voc_train_checks[voc_train_checks.length-1].getElementsByTagName("input")[0]
+
+    //If other checkboxes are checked, hide open text field and clear input
+    gen_ed_lst.addEventListener('change', function () {
+        if (this.checked) {
+            gen_ed_op.style.display = "block";
+        }
+    });
+
+    voc_train_lst.addEventListener('change', function () {
+        if (this.checked) {
+            voc_train_op.style.display = "block";
+        }
+    });
+
+    //If other checkboxes are checked, hide field and clear input
+    // interating over all checkboxes but the last one
+    for (var i = 0; i < voc_train_checks.length-1; i++) {
+        voc_train_checks[i].getElementsByTagName("input")[0].addEventListener('change', function () {
+        if (this.checked) {
+            voc_train_op.style.display = "none";
+            voc_train_op.value = null
+        }
+    });
+    }
+
+    for (var i = 0; i < gen_ed_checks.length-1; i++) {
+        gen_ed_checks[i].getElementsByTagName("input")[0].addEventListener('change', function () {
+        if (this.checked) {
+            gen_ed_op.style.display = "none";
+            gen_ed_op.value = null
+        }
+    });
+    }
+
+    window.addEventListener('load', finish_loading, { once: true });
+
+</script>
+
+<style>
+    /* hiding labels because we don't need them here (found no other way) */
+    label[for=id_edu_general_education_open] {
+        display: none;
+    }
+
+    label[for=id_edu_vocational_training_open] {
+        display: none;
+    }
+
+    #id_edu_general_education_open {
+        display: none;
+    }
+
+    #id_edu_vocational_training_open {
+        display: none;
+    }
+</style>
+
+{{ endblock }}

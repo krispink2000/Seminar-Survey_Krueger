@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+
+{% block custom_content %}
+<div class="container">
+
+    <div class="mb-3 bg-light border pt-2 pb-2 px-2">
+        <p>Haben Sie jemals eine der folgenden Handlungen im Zusammenhang mit einem Handelsthema durchgeführt?</p>
+        {{formfield 'pre_talk_friends'}}
+        {{formfield 'pre_share_socialmedia'}}
+        {{formfield 'pre_consider_voting'}}
+        {{formfield 'pre_support_petition'}}
+        {{formfield 'pre_attend_protest'}}
+        {{formfield 'pre_legal_action'}}
+        {{formfield 'pre_last_vote'}}
+        {{formfield 'pre_contact_politics'}}
+        {{formfield 'pre_boycott'}}
+    </div>
+
+
+    <p>Bitte klicken Sie nun auf den "Weiter"-Button, um fortzufahren.</p>
+    <button class="otree-btn-next btn btn-primary next-button otree-next-button">
+        Weiter
+    </button>
+</div>
+{% endblock %}

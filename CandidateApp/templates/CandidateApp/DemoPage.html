@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block custom_title %}
+{% endblock %}
+
+{% block custom_content %}
+<br>
+<h2> Survey Example </h2>
+    This is a demo page
+
+    <!-- This is the most basic way of implementing an input field -->
+    {{ formfield "age_question"}}
+
+   <button class="otree-btn-next btn btn-primary next-button otree-next-button">
+    Next
+</button>
+
+{% endblock %}

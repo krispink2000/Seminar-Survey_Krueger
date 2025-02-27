@@ -1,0 +1,47 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block custom_content }}
+
+<!-- questions -->
+<div id="content">
+    {{ include 'StartApp/config/html/mandatory.html' }}
+    {{ formfields }}
+</div>
+<br>
+<!-- next button -->
+{{ include 'global/Next_Page_Button.html' }}
+
+<!-- js to check whether to show question for federal_state -->
+<script>
+    const fs_div = document.getElementById("id_prep_federal_state").parentElement.parentElement
+    const part_div = document.getElementById("id_prep_participation").parentElement.parentElement
+    const elig_yes = document.getElementById("id_prep_eligible-0")
+
+    function toggle_dyn_item_visibility() {
+        if (elig_yes.checked) {
+            fs_div.style.display = "block";
+            part_div.style.display = "block"
+        } else {
+            fs_div.style.display = "none";
+            part_div.style.display = "none";
+        }
+    }
+
+    // attach event listener to each input element of the eligibility item
+    document.getElementById('id_prep_eligible')
+        .querySelectorAll('.form-check-input')
+        .forEach(
+            input => input.addEventListener('change', toggle_dyn_item_visibility)
+        );
+
+    window.addEventListener('load', () => {
+        toggle_dyn_item_visibility()
+        finish_loading()
+    },
+    { once: true });
+
+</script>
+
+
+{{ endblock }}

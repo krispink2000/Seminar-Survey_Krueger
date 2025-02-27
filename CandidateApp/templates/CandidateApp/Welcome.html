@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block custom_content %}
+<!-- Hidden form fields (not visible to participants) -->
+<input type="hidden" name="screen_width">
+<input type="hidden" name="screen_height">
+<input type="hidden" name="operating_system">
+
+<!-- Intro Text -->
+<p style="font-size: 18px;">
+    Nun möchten wir uns einem anderen Thema zuwenden. <br> <br>
+
+    In diesem Teil der Befragung werden Ihnen verschiedene Bilder von Politikerinnen präsentiert. Bitte nehmen Sie sich ausreichend Zeit, um jedes Bild genau zu betrachten. 
+    Es ist wichtig, dass Sie die Bilder sorgfältig ansehen, um Ihnen eine möglichst klare Einschätzung zu ermöglichen . 
+    Im ersten Block werden Ihnen insgesamt <span style="font-weight: bold; text-decoration: underline;">10 Bilder</span> angezeigt.<br>
+    Zu jedem Bild sollen Sie entweder die <span style="font-weight: bold; color: #008080; text-decoration: underline;">Kompetenz</span> oder die
+    <span style="font-weight: bold; color: #FFA500; text-decoration: underline;">Vertrauenswürdigkeit</span> der abgebildeten Politikerin bewerten. 
+    Überlegen Sie bei jeder Antwort, wie die jeweilige Person auf Sie wirkt und welche Eigenschaften Sie ihr zuschreiben würden.
+    <br> <br>
+    Nach diesem Block folgt ein zweiter Abschnitt mit <span style="font-weight: bold; text-decoration: underline;">weiteren 10 Bildern.</span> Auch hier bitten wir Sie,
+    jeweils eine spezifische Frage zu den dargestellten Personen zu beantworten.
+    Bitte beantworten Sie alle Fragen so ehrlich wie möglich, da Ihre Antworten für die Auswertung von großer Bedeutung sind. 
+    <br> <br>
+    Sobald Sie bereit sind klicken Sie bitte auf den <br><b>"Weiter"</b>-Button.
+</p>
+
+<!-- paper for the color selection: https://ieeexplore.ieee.org/abstract/document/6875961-->
+
+<!-- Continue Button -->
+<br> 
+<div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+    <button class="otree-btn-next btn btn-primary">Weiter</button>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Detect operating system
+    document.querySelector("input[name='screen_width']").value = screen.width;
+    document.querySelector("input[name='screen_height']").value = screen.height;
+    var os = -999;
+    var ua = navigator.userAgent;
+    if (ua.indexOf("Win") !== -1) os = 1; // Windows
+    if (ua.indexOf("Mac") !== -1) os = 2; // MacOS
+    if (ua.indexOf("Linux") !== -1) os = 3; // Linux
+    if (ua.indexOf("Android") !== -1) os = 4; // Android
+    if (ua.indexOf("like Mac") !== -1) os = 5; // iOS
+    document.querySelector("input[name='operating_system']").value = os;
+
+</script>
+{% endblock %}

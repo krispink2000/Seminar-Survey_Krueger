@@ -1,0 +1,31 @@
+{
+    "general_education": {
+        "label": "Welchen höchsten allgemeinbildenden Schulabschluss haben Sie?",
+        "choices": [
+            "Keinen Abschluss",
+            "Hauptschulabschluss",
+            "Realschulabschluss (Mittlere Reife)",
+            "Fachhochschulreife",
+            "Abitur",
+            "Noch in der Schule",
+            "weiß nicht",
+            "keine Angabe",
+            "anderer, nämlich:"
+        ]
+    },
+    "vocational_training": {
+        "label": "Welchen beruflichen Ausbildungsabschluss haben Sie? (bei mehreren beruflichen Abschlüssen nehmen Sie bitten den höchsten)",
+        "choices": [
+            "Keinen Ausbildungsabschluss",
+            "Berufsschulabschluss",
+            "Fachschulabschluss",
+            "Meister/Techniker",
+            "Fachhochschulabschluss",
+            "Hochschulabschluss",
+            "noch in Ausbildung",
+            "weiß nicht",
+            "keine Angabe",
+            "anderer, nämlich:"
+        ]
+    }
+}

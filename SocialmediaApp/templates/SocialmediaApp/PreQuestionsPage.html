@@ -1,0 +1,146 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+{% block scripts%}
+    <script>
+
+        var socialYes = document.getElementById('socialYes');
+        var divYes = document.getElementById('divYes');
+        var socialNo = document.getElementById('socialNo');
+        var divNo = document.getElementById('divNo');
+        var socialNA = document.getElementById('socialNA');
+        var divNA = document.getElementById('divNA');
+
+        // popout function
+        function popout() {
+            console.log('searching for the elements')
+        
+            if (socialYes.checked == true) {
+                console.log('yes');
+                divYes.style.display = "block";
+                divNo.style.display = "none";
+            }
+
+            if (socialNo.checked == true) {
+                console.log('no');
+                divYes.style.display = "none";
+                divNo.style.display = "none";
+            }
+
+            if (socialNA.checked == true) {
+                console.log('NA');
+                divYes.style.display = "none";
+                divNo.style.display = "none";
+                divNA.style.display = "none";
+            }
+        }
+
+
+        // unchecking checkboxes with none
+        function uncheckCheckboxes(radioId, checkboxClass) {
+            var noneRadio = document.getElementById(radioId);
+            var checkboxes = document.querySelectorAll('.' + checkboxClass);
+
+            if (noneRadio.checked) {
+                checkboxes.forEach(function(checkbox) {
+                    checkbox.checked = false;
+                });
+            }
+        }
+
+        document.getElementById('mediaNone').addEventListener('click', function() {
+            uncheckCheckboxes('mediaNone', 'mediasource-checkbox');
+        });
+
+        document.getElementById('socialNone').addEventListener('click', function() {
+            uncheckCheckboxes('socialNone', 'socialmedia-checkbox');
+        });
+
+        // unchecking none with checkboxes
+        function uncheckNone(checkboxClass, radioId) {
+            var checkboxes = document.querySelectorAll('.' + checkboxClass);
+            var noneRadio = document.getElementById(radioId);
+
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('click', function() {
+                    if (checkbox.checked) {
+                        noneRadio.checked = false;
+                    }
+                });
+            });
+        }
+
+        uncheckNone('mediasource-checkbox', 'mediaNone');
+        uncheckNone('socialmedia-checkbox', 'socialNone');
+
+    </script>
+{% endblock %}
+
+
+{% block custom_content %}
+
+    
+    <div class="mediasource">
+        <!-- First question -->
+        <p>Zunächst möchten wir Ihnen einige Fragen zu Ihrer Mediennutzung stellen.</p>
+        <p>Was sind Ihre bevorzugten Medienquellen? (Mehrfachnennungen möglich)</p>
+        <input id="socialMedia" type="checkbox" name="mediasource_social" class="mediasource-checkbox"> Soziale Medien (z.B. Facebook, Twitter, Instagram, LinkedIn)
+        <br>
+        <input id="onlineMedia" type="checkbox" name="mediasource_online" class="mediasource-checkbox"> Onlinemedien (z.B. Spiegel Online)
+        <br>
+        <input id="tv" type="checkbox" name="mediasource_tv" class="mediasource-checkbox"> Fernsehen
+        <br>
+        <input id="radio" type="checkbox" name="mediasource_radio" class="mediasource-checkbox"> Radio
+        <br>
+        <input id="printedMedia" type="checkbox" name="mediasource_printed" class="mediasource-checkbox"> Printmedien (z.B. Süddeutsche Zeitung, Die Zeit)
+        <br>
+        <input id="mediaNone" type="radio" name="mediasource_none" value="1" > Keine der oben genannten
+        <br>
+        <input id="mediaOther" type="checkbox" name="mediasource_other" > Andere: {{ form.mediasource_other }}
+    </div>
+
+    <div style="margin-bottom: 32px;"></div>
+
+    <div class="socialmedia">
+        <!-- Second question -->
+        <p>Nutzen Sie <b>Soziale Medien?</b></p>
+        <input id="socialYes" type="radio" name="social_media" value="1" onclick="popout()" /> Ja
+        <br>
+        <input id="socialNo" type="radio" name="social_media" value="2" onclick="popout()" /> Nein
+        <br>
+        <input id="socialNA" type="radio" name="social_media" value="3" onclick="popout()" /> Keine Angabe
+
+        {{ formfield_errors 'social_media' }}
+
+        <div style="margin-bottom: 32px;"></div>
+
+        <!-- Second question - popout section -->
+        <div id="divYes" style="display: none">
+            <p>Welche Soziale Medien Plattform nutzen Sie <b>regelmäßig?</b> (Mehrfachnennungen möglich)</p>
+            <input id="facebook" type="checkbox" name="socialmedia_facebook" class="socialmedia-checkbox" /> Facebook
+            <br>
+            <input id="twitter" type="checkbox" name="socialmedia_twitter" class="socialmedia-checkbox" /> X / Twitter
+            <br>
+            <input id="instagram" type="checkbox" name="socialmedia_instagram" class="socialmedia-checkbox" /> Instagram
+            <br>
+            <input id="tiktok" type="checkbox" name="socialmedia_tiktok" class="socialmedia-checkbox" /> TikTok
+            <br>
+            <input id="linkedin" type="checkbox" name="socialmedia_linkedin" class="socialmedia-checkbox" /> LinkedIn
+            <br>
+            <input id="xing" type="checkbox" name="socialmedia_xing" class="socialmedia-checkbox" /> Xing
+            <br>
+            <input id="socialNone" type="radio" name="socialmedia_none" value="1" /> Keine der oben genannten
+            <br>
+            <input id="socialOther" type="checkbox" name="socialmedia_other" > Andere: {{ form.socialmedia_other }}
+    </div>
+
+    <div style="margin-bottom: 24px;"></div>
+
+    <!-- Next button -->
+    <button class="otree-btn-next btn btn-primary next-button otree-next-button">
+        Weiter
+    </button>
+
+{% endblock %}

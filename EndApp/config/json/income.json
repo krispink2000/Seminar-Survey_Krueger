@@ -1,0 +1,22 @@
+{
+    "net_income": {
+        "label": "Wie hoch ist das <b>monatliche Netto-Einkommen Ihres Haushaltes insgesamt? </b> Damit ist  die Summe, die nach Abzug von Steuern und Sozialversicherungsbeiträgen übrig bleibt, gemeint.",
+        "choices": [
+            "unter 500 Euro",
+            "500 bis unter 750 Euro",
+            "750 bis unter 1000 Euro",
+            "1000 bis unter 1250 Euro",
+            "1250 bis unter 1500 Euro",
+            "1500 bis unter 2000 Euro",
+            "2000 bis unter 2500 Euro",
+            "2500 bis unter 3000 Euro",
+            "3000 bis unter 4000 Euro",
+            "4000 bis unter 5000 Euro",
+            "5000 bis unter 7500 Euro",
+            "7500 bis unter 10000 Euro",
+            "10000 und mehr",
+            "weiß nicht",
+            "keine Angabe"
+        ]
+    }
+}

@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block custom_title %}
+<h2> Vielen Dank für Ihre Teilnahme! </h2>
+
+{% endblock %}
+
+{% block custom_content %}
+<p style="font-size: 18px;">
+    Wir möchten uns herzlich bei Ihnen für Ihre Zeit und Ihre wertvollen Einschätzungen bedanken! Ihre Antworten sind ein wichtiger Bestandteil unserer Studie und helfen uns, das Verständnis über die Wahrnehmung politischer Persönlichkeiten zu vertiefen. <br><br>
+    
+    Die Befragung wird nun mit einem weiteren Thema fortgesetzt. Wir bitten Sie, auch in den nächsten Abschnitten aufmerksam und ehrlich zu antworten, da Ihre Teilnahme einen großen Beitrag zu unseren wissenschaftlichen Erkenntnissen leistet. <br><br>
+    
+    Vielen Dank für Ihre Unterstützung!
+</p>
+
+<!-- Continue Button -->
+<br> 
+<div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+    <button class="otree-btn-next btn btn-primary">Weiter</button>
+</div>
+<br>
+<br>
+<footer style="font-size: 14px; text-align: center;">
+Verwendete Bilder:
+<a href="https://members.parliament.uk/members/Commons" target="_blank" style="color: blue; text-decoration: underline;">© House of Commons</a>; Lizenz:
+<a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" style="color: blue; text-decoration: underline;">
+Attribution 3.0 Unported (CC BY 3.0)</a>. Bilder wurden geringfügig verändert.
+</footer>
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "otree/Page.html" %}
+{% load otree static %}
+
+{% block global_styles  %}
+{% endblock %}
+
+{% block global_scripts  %}
+{% endblock %}
+
+{{ block content }}
+    {{ include 'global/Logo.html' }}
+    {% block custom_content %}
+    {% endblock %}
+{{ endblock }}
+
+
+<script>
+    function checkAndRedirect() {
+        // Ensure js_vars is defined and has the "link" key
+        if (typeof js_vars !== "undefined" && js_vars["link"]) {
+            window.location.replace(js_vars["link"]);
+        } else {
+            finish_loading();
+        }
+    }
+
+    function waitForData() {
+        if (typeof js_vars !== "undefined" && js_vars["link"] !== undefined) {
+            checkAndRedirect();
+        } else {
+            setTimeout(waitForData, 100); // Retry every 100ms until js_vars is available
+        }
+    }
+
+    window.onload = function () {
+        waitForData(); // Start waiting for the data
+    };
+</script>
+

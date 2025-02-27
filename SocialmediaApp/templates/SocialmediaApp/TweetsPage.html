@@ -1,0 +1,116 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block script%}
+{% endblock %}
+
+{% block custom_title %}
+Post
+{% endblock %}
+
+{% block global_styles %}
+    <link rel="stylesheet" href="{% static 'tweet_component.css' %}">
+{% endblock %}
+
+{% block custom_content %}
+    
+    <div style="margin-bottom: 24px;"></div>
+
+    <!-- Tweet container -->
+    <div class="tweet-box">
+
+        <div class="tweet-header">
+
+            <div class="avatar">
+                <img src="/static/images/twitter.png" alt="avatar" height="40px" widht="40px">
+            </div>
+
+            <div class="user-data">
+                <div class="shownname">
+                    <span>YourFav</span>
+                    <img src="/static/images/verified.png" alt="verified" height="16px" widht="16px">
+                </div>
+                <span>@User123</span>
+            </div>
+
+        </div>
+
+        <div class="tweet-body">
+            <span> {{ selected_tweet }} </span>
+        </div>
+
+        <!-- Community note -->
+        {% if show_note %}
+        <div class="community-note">
+
+            <div class="community-header">
+                <img src="/static/images/community.png" alt="community" height="19px" width="19px">
+                <span>Leser*innen haben Kontext hinzugefügt</span>
+            </div>
+
+            <div class="community-content">
+                <span> {{ selected_community }}
+                </span>
+            </div>
+
+            <div class="community-footer">
+                <div class="community-footer-text">
+                    <span>Findest du das hilfreich?</span>
+                </div>
+
+                <div class="community-footer-button">
+                    <div class="button">
+                        <span>Bewerten</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="note">
+            <span>Kontext wird von Leuten geschrieben, die X nutzen, und wird angezeigt, wenn er von anderen als hilfreich bewertet wurde. 
+                Mehr erfahren.</span>
+        </div>
+
+        <div style="margin-bottom: 16px;"></div>
+        {% endif %}
+
+        <div class="tweet-data">
+            <span> 15:55 nachm. · 15. Jan. 2024 · <b>7,1Mio</b> Mal angezeigt </span>
+        </div>
+
+        <!-- Footer -->
+        <div class="tweet-footer">
+            <div class="icon">
+                <img src="/static/images/reply.png" alt="reply" height="22.5px" widht="22.5px">
+                <span>2,459</span>
+            </div>
+            <div class="icon">
+                <img src="/static/images/retweet.png" alt="retweet" height="22.5px" widht="22.5px">
+                <span>2,927</span>
+            </div>
+            <div class="icon">
+                <img src="/static/images/heart.png" alt="like" height="22.5px" widht="22.5px">
+                <span>55,148</span>
+            </div>
+            <div class="icon">
+                <img src="/static/images/bookmark.png" alt="bookamrk" height="22.5px" widht="22.5px">
+                <span>5,035</span>
+            </div>
+            <div class="icon">
+                <img src="/static/images/share.png" alt="share" height="22.5px" widht="22.5px">
+            </div>
+        </div>
+
+    </div>
+
+    <div style="margin-bottom: 24px;"></div>
+
+    <div class="next-button">
+        <button class="otree-btn-next btn btn-primary next-button otree-next-button">
+            Weiter
+        </button>
+    <div/>
+{% endblock %}
+

@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{{ block custom_content }}
+
+<!-- end text -->
+<div id="content">
+    {{ if player.session.config.quota_screenout }}
+        {{ include 'EndApp/config/html/end_forward.html' }}
+    {{ else }}
+        {{ include 'EndApp/config/html/end.html' }}
+    {{ endif }}
+</div>
+
+<!-- send button -->
+{{ include 'global/Send_Button.html' }}
+
+<script>
+    window.addEventListener('load', finish_loading, { once: true });
+</script>
+{{ endblock }}

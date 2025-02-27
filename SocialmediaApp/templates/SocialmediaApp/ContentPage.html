@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block script%}
+{% endblock %}
+
+{% block custom_title %}
+Weitere Informationen
+{% endblock %}
+
+{% block global_styles %}
+    <link rel="stylesheet" href="{% static 'tweet_component.css' %}">
+{% endblock %}
+
+{% block custom_content %}
+
+    <div style="margin-bottom: 24px;"></div>
+
+    <div id="tweet_content" class="tweet-box">
+        <div class="tweet-body">
+            <span>{{ selected_content }}</span>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 24px;"></div>
+
+    <div class="next-button">
+        <button class="otree-btn-next btn btn-primary next-button otree-next-button">
+            Weiter
+        </button>
+    </div>
+{% endblock %}
